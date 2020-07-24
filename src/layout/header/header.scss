@@ -1,0 +1,35 @@
+@import '/style.scss';
+#header {
+  padding: 0.5rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: transparent;
+  box-shadow: inset 0px 30px 28px 1px rgba(0, 0, 0, 0.33);
+  position: sticky;
+  display: flex;
+  flex-direction: row;
+  top: 0;
+
+  #netflix_icon {
+    width: 100px;
+    margin: auto 0;
+  }
+
+  .navigation {
+    list-style: none;
+    & li {
+      color: $white;
+      display: inline-block;
+      padding: 0.5rem;
+      vertical-align: middle;
+    }
+  }
+
+  & .secondary {
+    margin: auto 0;
+    margin-left: auto;
+    #search_icon {
+      width: 3vh;
+    }
+  }
+}

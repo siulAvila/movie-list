@@ -4,15 +4,27 @@ const CleanPlugin = require('clean-webpack-plugin').CleanWebpackPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './app.ts',
+  entry: ['./app.ts', './style.scss'],
   mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/build.min.js',
   },
+  devServer: {
+    port: '4200',
+    compress: true,
+  },
   devtool: 'inline-source-map',
   resolve: {
-    extensions: ['.ts', '.js', ',scss', '.css'],
+    extensions: ['.ts', '.js', ',scss', '.css', 'html'],
+    alias: {
+      '@decorators': path.resolve(__dirname, 'src/decorators'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@models': path.resolve(__dirname, 'src/models'),
+      '@environment': path.resolve(__dirname, 'src/environment'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
+      '@layout': path.resolve(__dirname, 'src/layout'),
+    },
   },
   module: {
     rules: [
@@ -23,20 +35,27 @@ module.exports = {
       },
       {
         test: /\.s[c,a]ss$/i,
-        exclude: /node_modules/,
+        exclude: [/node_modules/, /^style\.scss$/],
         use: [
-          { loader: MiniCssExtractPlugin.loader },
-          { loader: 'css-modules-typescript-loader' }, // to generate a .d.ts module next to the .scss file (also requires a declaration.d.ts with "declare modules '*.scss';" in it to tell TypeScript that "import styles from './styles.scss';" means to load the module "./styles.scss.d.td")
+          { loader: 'sass-to-string' },
           {
-            loader: 'css-loader',
+            loader: 'sass-loader',
             options: {
-              modules: {
-                localIdentName: '[local]',
+              sassOptions: {
+                outputStyle: 'compressed',
               },
             },
           },
-          { loader: 'sass-loader' },
+          { loader: 'css-modules-typescript-loader' },
         ],
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+      },
+      {
+        test: /style\.scss/,
+        loader: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
   },

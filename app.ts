@@ -1,8 +1,5 @@
-import styles from './style.scss';
+import { MovieList } from '@components/movie-list/movie-list.controller';
+import { Header } from '@layout';
 
-class a extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<div class="${styles.classe}">alow</div>`;
-  }
-}
-customElements.define('teste-teste', a);
+new MovieList();
+new Header();

@@ -1,3 +1,9 @@
-.classe {
-  background-color: red;
+@import './assets/scss/mixins';
+@import './assets/scss/variables';
+
+body {
+  margin: 0;
+  padding: 0;
+  max-height: 100vh;
+  background-color: white;
 }
