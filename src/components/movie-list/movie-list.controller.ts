@@ -36,7 +36,7 @@ export class MovieList extends HTMLElement {
 
     ulMovieList.innerHTML += this.movieList
       .map((movie) => {
-        return `<li class="movie"> <img id="movie__img" src="${movie.images[0]}"></li>`;
+        return `<li class="movie"> <img class="movie__img" src="${movie.images[0]}"></li>`;
       })
       .join('');
     this.createEventListeners();

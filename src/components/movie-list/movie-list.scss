@@ -1,5 +1,42 @@
+$imageWidth: 250px;
+$imageHeight: calc(#{$imageWidth} / (16 / 9));
+$duration: 1s;
+$growFactor: 1.5;
+$moveLeft: calc(- (#{$imageWidth} * (#{$growFactor} - 1) / 2));
+$moveRight: calc(#{$imageWidth} * (#{$growFactor} - 1));
+
 #row {
   display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 0 4px;
+  transition: transform $duration;
+
+  &:hover {
+    transform: translate3d($moveLeft, 0, 0);
+  }
+
   .movie {
+    margin: 0 4px;
+    transition: transform $duration;
+
+    &:hover ~ .movie {
+      transform: translate3d($moveRight, 0, 0);
+    }
+    &__img {
+      transform-origin: top left;
+      height: $imageHeight;
+      width: $imageWidth;
+      transition: transform $duration;
+
+      box-sizing: border-box;
+      object-fit: cover;
+
+      &:hover {
+        transform: scale($growFactor);
+        z-index: 2;
+      }
+    }
   }
 }
