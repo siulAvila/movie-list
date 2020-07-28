@@ -1,0 +1,17 @@
+$z-index: (
+  carrousel-image-hover: 3,
+  carrousel-indicator: 4,
+  header: 5,
+);
+
+@function z-index($key) {
+  @if map-has-key($map: $z-index, $key: key) {
+    @return map-get($z-index, $key);
+  } @else {
+    @return 1;
+  }
+}
+
+@mixin z-index($key) {
+  z-index: z-index($key);
+}

@@ -1,0 +1,76 @@
+@import '/assets/scss/z-index';
+@import '/assets/scss/indicator-icons';
+@import '/assets/scss/breakpoints';
+
+$imageWidth: 250px;
+$imageHeight: calc(#{$imageWidth} / (16 / 9));
+$duration: 1s;
+$growFactor: 1.5;
+$moveLeft: calc(- (#{$imageWidth} * (#{$growFactor} - 1) / 2));
+$moveRight: calc(#{$imageWidth} * (#{$growFactor} - 1));
+$indicatorOpacity: 0.8;
+$indicatorColor: white;
+$indicatorWidth: 16px;
+
+.carrousel {
+  position: relative;
+  width: 100%;
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    list-style: none;
+    padding: 0;
+    transition: transform 2s;
+    position: relative;
+    scroll-snap-type: x mandatory;
+    @include breakpoint(phone) {
+      overflow-x: auto;
+    }
+
+    &:hover {
+      transform: translate3d($moveLeft, 0, 0);
+    }
+
+    .movie {
+      margin: 0 4px;
+      transition: transform $duration;
+      position: relative;
+      scroll-snap-align: start;
+
+      &:hover ~ .movie {
+        transform: translate3d($moveRight, 0, 0);
+      }
+
+      &__img {
+        transform-origin: top left;
+        height: $imageHeight;
+        width: $imageWidth;
+        transition: transform $duration;
+        box-sizing: border-box;
+        object-fit: cover;
+
+        &:hover {
+          transform: scale($growFactor);
+          @include z-index(carrousel-image-hover);
+          position: relative;
+        }
+      }
+    }
+  }
+
+  &__indicator {
+    width: calc(#{$imageWidth} / 2);
+    height: $imageHeight;
+    background-color: grey;
+    opacity: 0;
+    position: absolute;
+    @include z-index(carrousel-indicator);
+    &:hover {
+      opacity: $indicatorOpacity;
+    }
+    @include indicator-icon(right, $indicatorColor, $indicatorWidth);
+    @include indicator-icon(left, $indicatorColor, $indicatorWidth);
+  }
+}

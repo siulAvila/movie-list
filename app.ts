@@ -1,5 +1,3 @@
-import { MovieList } from '@components/movie-list/movie-list.controller';
-import { Header } from '@layout';
+import { Home } from '@pages';
 
-new MovieList();
-new Header();
+new Home();

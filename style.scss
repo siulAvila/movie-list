@@ -1,10 +1,12 @@
-@import './assets/scss/mixins';
 @import './assets/scss/variables';
+@import './assets/scss/breakpoints';
 
 body {
   margin: 0;
   padding: 0;
   max-height: 100vh;
-  background-color: white;
-  overflow: hidden;
+  background-color: $light-grey;
+  color: white;
+  overflow-x: hidden;
+  font-family: 'Martel Sans', sans-serif;
 }

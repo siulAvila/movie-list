@@ -1,0 +1,80 @@
+@import '/assets/scss/variables';
+
+.footer {
+  width: 100%;
+  font-size: 0.9rem;
+  color: $light-grey;
+  margin: 2rem 0;
+  color: $grey;
+
+  &__content {
+    max-width: 980px;
+    margin: 20px auto;
+  }
+
+  &__social-link {
+    height: 2rem;
+    width: 2rem;
+    display: inline-block;
+    margin-right: 1rem;
+  }
+
+  &__social-link--facebook {
+    background: url('https://api.iconify.design/ant-design:facebook-filled.svg?color=grey')
+      no-repeat center center / contain;
+  }
+
+  &__social-link--instagram {
+    background: url('https://api.iconify.design/ant-design:instagram-filled.svg?color=grey')
+      no-repeat center center / contain;
+  }
+
+  &__social-link--twitter {
+    background: url('https://api.iconify.design/ant-design:twitter-outlined.svg?color=grey')
+      no-repeat center center / contain;
+  }
+
+  &__social-link--youtube {
+    background: url('https://api.iconify.design/ant-design:youtube-filled.svg?color=grey')
+      no-repeat center center / contain;
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+  }
+
+  &__column {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: start;
+    margin: 1rem 4rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__link {
+    color: $grey;
+    text-decoration: none;
+    line-height: 2rem;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__info-box {
+    border: 1px solid $grey;
+    padding: 0.2rem 0.5rem;
+    color: $grey;
+    margin: 2rem 0;
+    box-sizing: border-box;
+    max-width: 150px;
+    text-align: center;
+  }
+
+  &__copyright {
+    font-size: 0.8rem;
+  }
+}

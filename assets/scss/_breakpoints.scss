@@ -1,6 +1,6 @@
 $breakpoints: (
   phone: (
-    min-width: 320px,
+    max-width: 760px,
   ),
   tablet: (
     min-width: 768px,
@@ -12,6 +12,8 @@ $breakpoints: (
 
 @mixin breakpoint($value) {
   @if map-has-key($map: $breakpoints, $key: $value) {
+    @debug 'aqkiii' + #{inspect(map-get($breakpoints, $value))};
+
     @media #{inspect(map-get($breakpoints, $value))} {
       @content;
     }

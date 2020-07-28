@@ -24,6 +24,7 @@ module.exports = {
       '@environment': path.resolve(__dirname, 'src/environment'),
       '@utils': path.resolve(__dirname, 'src/utils'),
       '@layout': path.resolve(__dirname, 'src/layout'),
+      '@pages': path.resolve(__dirname, 'src/pages'),
     },
   },
   module: {

@@ -1,0 +1,30 @@
+$directions: (
+  right: left,
+  left: right,
+  top: bottom,
+  bottom: top,
+);
+
+@mixin indicator-icon($direction, $color, $width) {
+  @if map-has-key($directions, $direction) {
+    &##{$direction} {
+      #{map-get($directions, #{$direction})}: 0px;
+      &::after {
+        content: '';
+        position: absolute;
+        border-width: $width;
+        margin-left: auto;
+        margin-right: auto;
+        border-color: transparent;
+        top: 50%;
+        transform: translateY(-50%);
+        #{$direction}: 50%;
+        border-style: solid;
+        border-#{$direction}-color: $color;
+      }
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$direction}`. "
+    + "Available directions are: #{map-keys($directions)}.";
+  }
+}
