@@ -2,7 +2,7 @@ import { CustomElementConfig } from '@models';
 
 type Constructor = new (...args: any[]) => HTMLElement;
 
-export function WebComponent({
+export function Component({
   shadowDom = true,
   ...config
 }: CustomElementConfig) {
@@ -10,11 +10,14 @@ export function WebComponent({
     const template = document.createElement('template');
     config.template = `<style>${config.style}</style> ${config.template}`;
 
-    template.innerHTML = config.template;
     const connectedCallback =
       target.prototype.connectedCallback || function () {};
 
     target.prototype.connectedCallback = function () {
+      connectedCallback.call(this);
+
+      template.innerHTML = dataBinding(config.template, target.prototype);
+
       const clone = document.importNode(template.content, true);
 
       if (shadowDom) {
@@ -22,10 +25,20 @@ export function WebComponent({
       } else {
         this.appendChild(clone);
       }
-
-      connectedCallback.call(this);
     };
 
     customElements.define(config.seletor, target);
   };
+}
+
+function dataBinding(template: string, element: any) {
+  const regex = new RegExp(/{{([^{ , ^}]*)}}/);
+  let match;
+  while ((match = regex.exec(template))) {
+    const binding = match[0];
+    const propertyName = match[1];
+
+    template = template.replace(binding, element[propertyName]);
+  }
+  return template;
 }

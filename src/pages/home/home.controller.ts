@@ -1,12 +1,12 @@
 import styles from './home.scss';
 
 import template from './home.html';
-import { WebComponent } from '@decorators';
+import { Component } from '@decorators';
 
 import { Carrousel, Title } from '@components';
 import { Header, Footer } from '@layout';
 
-@WebComponent({
+@Component({
   seletor: 'app-home',
   style: styles as string,
   template: template,

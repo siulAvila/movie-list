@@ -1,8 +1,8 @@
 import styles from './header.scss';
-import { WebComponent } from '@decorators';
+import { Component } from '@decorators';
 import template from './header.html';
 
-@WebComponent({
+@Component({
   seletor: 'app-header',
   template: template,
   style: styles as string,

@@ -1,9 +1,9 @@
 import styles from './footer.scss';
 import template from './footer.html';
 
-import { WebComponent } from '@decorators';
+import { Component } from '@decorators';
 
-@WebComponent({
+@Component({
   seletor: 'app-footer',
   template: template,
   style: styles as string,

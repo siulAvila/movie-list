@@ -1,13 +1,18 @@
-import { WebComponent } from '@decorators';
+import { Component, Input } from '@decorators';
 
 import styles from './title.scss';
 import template from './title.html';
 
-@WebComponent({
+@Component({
   seletor: 'app-title',
   style: styles as string,
   template: template,
 })
 export class Title extends HTMLElement {
-  connectedCallback() {}
+  @Input('title')
+  text: string = '';
+
+  connectedCallback() {
+    console.log(this.text);
+  }
 }

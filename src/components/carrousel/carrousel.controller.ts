@@ -1,4 +1,4 @@
-import { WebComponent } from '@decorators';
+import { Component } from '@decorators';
 import { apiRequest } from '@utils/http-request';
 
 import { Movie } from '@models';
@@ -7,7 +7,7 @@ import styles from './carrousel.scss';
 
 import template from './carrousel.html';
 
-@WebComponent({
+@Component({
   seletor: 'app-carrousel',
   style: styles as string,
   template: template,

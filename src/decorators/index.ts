@@ -1,1 +1,2 @@
-export * from './web-component.decorator';
+export * from './component.decorator';
+export * from './input.decorator';

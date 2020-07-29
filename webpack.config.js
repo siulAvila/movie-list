@@ -47,7 +47,7 @@ module.exports = {
               },
             },
           },
-          { loader: 'css-modules-typescript-loader' },
+          //    { loader: 'css-modules-typescript-loader' },
         ],
       },
       {
