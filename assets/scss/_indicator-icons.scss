@@ -5,7 +5,20 @@ $directions: (
   bottom: top,
 );
 
-@mixin indicator-icon($direction, $color, $width) {
+$align-position: (
+  center: 50%,
+  start: initial,
+  end: 100%,
+);
+
+@mixin indicator-icon(
+  $direction,
+  $color,
+  $width,
+  $align: center,
+  $margin-left: auto,
+  $margin-right: auto
+) {
   @if map-has-key($directions, $direction) {
     &##{$direction} {
       #{map-get($directions, #{$direction})}: 0px;
@@ -13,12 +26,12 @@ $directions: (
         content: '';
         position: absolute;
         border-width: $width;
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: $margin-left;
+        margin-right: $margin-right;
         border-color: transparent;
         top: 50%;
         transform: translateY(-50%);
-        #{$direction}: 50%;
+        #{$direction}: #{map-get($align-position, #{$align})};
         border-style: solid;
         border-#{$direction}-color: $color;
       }

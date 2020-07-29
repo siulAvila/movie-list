@@ -8,10 +8,20 @@ import template from './header.html';
   style: styles as string,
 })
 export class Header extends HTMLElement {
-  constructor() {
-    super();
+  connectedCallback() {
+    this.createEventListener();
+  }
+
+  createEventListener() {
     window.addEventListener('scroll', () => {
+      const header = this.shadowRoot!.querySelector('header');
+
       if (window.scrollY === 0) {
+        header?.classList.remove('header--scrolling');
+        header?.classList.add('header--initial');
+      } else {
+        header?.classList.remove('header--initial');
+        header?.classList.add('header--scrolling');
       }
     });
   }

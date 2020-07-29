@@ -1,0 +1,39 @@
+@import '/assets/scss/indicator-icons';
+@import '/assets/scss/z-index';
+@import '/assets/scss/variables';
+
+.title {
+  margin-bottom: 0;
+  &__info {
+    display: inline-block;
+    opacity: 0;
+    font-size: small;
+    color: $grey;
+    transform: translateX(-50px);
+    transition: opacity 1s, transform 1s;
+  }
+  &:hover {
+    .title__info {
+      opacity: 1;
+      transform: translateX(5px);
+      cursor: pointer;
+    }
+  }
+}
+
+// .title {
+//     display: inline-block;
+//     &__more {
+//       display: inline-block;
+
+//       position: relative;
+//       vertical-align: middle;
+//       @include indicator-icon(left, grey, 10px, start, 1rem);
+//       transition: opacity 1s;
+//     }
+//     &:hover {
+//       & .title__more {
+//         opacity: 1;
+//       }
+//     }
+//   }
